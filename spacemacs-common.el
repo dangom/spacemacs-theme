@@ -197,7 +197,7 @@ to 'auto, tags may not be properly aligned. "
      `(font-lock-variable-name-face ((,class (:foreground ,var))))
      `(font-lock-warning-face ((,class (:foreground ,war :background ,bg1))))
      `(fringe ((,class (:background ,bg1 :foreground ,base))))
-     `(header-line ((,class :background ,bg4)))
+     `(header-line ((,class :background nil :inherit nil)))
      `(highlight ((,class (:foreground ,base :background ,highlight))))
      `(hl-line ((,class (:background ,bg2))))
      `(isearch ((,class (:foreground ,bg1 :background ,mat))))
@@ -659,9 +659,9 @@ to 'auto, tags may not be properly aligned. "
      `(markdown-table-face ((,class (:foreground ,base :background ,head1-bg))))
 
 ;;;;; mode-line
-     `(mode-line           ((,class (:foreground ,base :background ,act1 :box (:color ,border :line-width 1)))))
+     `(mode-line           ((,class (:foreground ,base :background ,bg1 :box (:color ,border :line-width 1)))))
      `(mode-line-buffer-id ((,class (:inherit bold :foreground ,func))))
-     `(mode-line-inactive  ((,class (:foreground ,base :background ,bg1  :box (:color ,border :line-width 1)))))
+     `(mode-line-inactive  ((,class (:foreground ,base :background ,bg1  :box nil))))
 
 ;;;;; mu4e
      `(mu4e-attach-number-face ((,class (:foreground ,var))))
