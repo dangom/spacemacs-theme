@@ -95,6 +95,21 @@ to 'auto, tags may not be properly aligned. "
   :type 'boolean
   :group 'spacemacs-theme)
 
+(defcustom spacemacs-theme-default-mono-font "Fira Code"
+  "Default monospaced font for the spacemacs theme."
+  :type 'string
+  :group 'spacemacs-theme)
+
+(defcustom spacemacs-theme-default-serif-font "Garamond"
+  "Default serif font for the spacemacs theme."
+  :type 'string
+  :group 'spacemacs-theme)
+
+(defcustom spacemacs-theme-default-sans-font "Source Sans Pro"
+  "Default sans font for the spacemacs theme."
+  :type 'string
+  :group 'spacemacs-theme)
+
 (defun true-color-p ()
   (or
    (display-graphic-p)
@@ -178,7 +193,7 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; basics
      `(cursor ((,class (:background ,cursor))))
      `(custom-button ((,class :background ,bg2 :foreground ,base :box (:line-width 2 :style released-button))))
-     `(default ((,class (:background ,bg1 :foreground ,base))))
+     `(default ((,class (:background ,bg1 :foreground ,base :family ,spacemacs-theme-default-mono-font))))
      `(default-italic ((,class (:italic t))))
      `(error ((,class (:foreground ,err))))
      `(eval-sexp-fu-flash ((,class (:background ,suc :foreground ,bg1))))
@@ -214,6 +229,10 @@ to 'auto, tags may not be properly aligned. "
      `(tooltip ((,class (:background ,ttip-sl :foreground ,base :bold nil :italic nil :underline nil))))
      `(vertical-border ((,class (:foreground ,border))))
      `(warning ((,class (:foreground ,war))))
+
+;;;;; basic fonts
+     `(fixed-pitch ((t (:family ,spacemacs-theme-default-mono-font))))
+     `(variable-pitch ((t (:family ,spacemacs-theme-default-serif-font :height 1.0))))
 
 ;;;;; ace-window
      `(aw-leading-char-face ((,class (:foreground ,func :weight bold :height 2.0 :box (:line-width 1 :color ,keyword :style released-button)))))
