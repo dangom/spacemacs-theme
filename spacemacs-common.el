@@ -32,10 +32,13 @@
 ;; It comes with two versions, dark and light and should work well in
 ;; a 256 color terminal.
 
+;;; Dependencies:
+(require 'color)
+
 ;;; Code:
 
 (defmacro dyn-let (varlist fn setfaces setvars)
-  (list 'let (append varlist (funcall fn)) setfaces setvars))
+  (list 'let* (append varlist (funcall fn)) setfaces setvars))
 
 (defgroup spacemacs-theme nil
   "Spacemacs-theme options."
@@ -183,6 +186,49 @@ to 'auto, tags may not be properly aligned. "
         (magenta       (if (eq variant 'dark) (if (true-color-p) "#a31db1" "#af00df") (if (true-color-p) "#a31db1" "#800080")))
         (yellow        (if (eq variant 'dark) (if (true-color-p) "#b1951d" "#875f00") (if (true-color-p) "#b1951d" "#875f00")))
         (yellow-bg     (if (eq variant 'dark) (if (true-color-p) "#32322c" "#262626") (if (true-color-p) "#f6f1e1" "#ffffff")))
+
+        (dark-1             "#2E3440")
+        (dark-2             "#3B4252")
+        (dark-3             "#434C5E")
+        (dark-4             "#4C566A")
+        (light-1            "#D8DEE9")
+        (light-2            "#E5E9F0")
+        (light-3            "#ECEFF4")
+        (accent-dark        "#1C2028")
+        (accent-dark-gray   (color-darken-name accent-dark 1))
+        (accent-light       "#8a9899")
+        (accent-shade-1     "#8FBCBB")
+        (accent-shade-2     "#88C0D0")
+        (accent-shade-3     "#81A1C1")
+        (accent-shade-4     "#5E81AC")
+        (colors-blue        accent-shade-4)
+        (colors-red         "#BF616A")
+        (colors-orange      "#D08770")
+        (colors-yellow      "#EBCB8B")
+        (colors-green       "#A3BE8C")
+        (colors-purple      "#B48EAD")
+
+        ;; For use in levelified faces set
+        (level-1            colors-blue)
+        (level-2            colors-red)
+        (level-3            colors-purple)
+        (level-4            colors-orange)
+        (level-5            accent-shade-3)
+        (level-6            colors-green)
+        (level-7            accent-shade-2)
+        (level-8            colors-yellow)
+        (level-9            accent-shade-1)
+
+        ;; Base gray shades
+        (bg-white           "#FEFFF9")
+        (bg-dark            accent-dark-gray)
+        (bg-darker          accent-dark)
+        (bg-dark-solaire    (color-lighten-name accent-dark 2))
+        (gray               (color-lighten-name dark-4 20))
+
+        (builtin            colors-orange)
+        (doc                (color-lighten-name dark-4 20))
+
         )
 
         custom-colors-override
@@ -747,14 +793,14 @@ to 'auto, tags may not be properly aligned. "
      `(org-footnote  ((,class (:underline t :foreground ,base))))
      `(org-hide ((,class (:foreground ,base))))
      `(org-kbd ((,class (:inherit region :foreground ,base :box (:line-width 1 :style released-button)))))
-     `(org-level-1 ((,class (:inherit nil :family ,serif-font :bold ,(if spacemacs-theme-org-bold 'unspecified nil) :foreground ,bg-dark :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head1-bg)))))
-     `(org-level-2 ((,class (:inherit nil :family ,serif-font :bold ,(if spacemacs-theme-org-bold 'unspecified nil) :slant italic :foreground "#104e8b" :height ,(if spacemacs-theme-org-height 1.2 1.0) :background ,(when spacemacs-theme-org-highlight head2-bg)))))
-     `(org-level-3 ((,class (:inherit nil :family ,serif-font :bold nil :foreground "#1874cd" :height ,(if spacemacs-theme-org-height 1.1 1.0) :background ,(when spacemacs-theme-org-highlight head3-bg)))))
-     `(org-level-4 ((,class (:inherit nil :family ,serif-font :bold nil :foreground ,"#1c86ee" :background ,(when spacemacs-theme-org-highlight head4-bg)))))
-     `(org-level-5 ((,class (:inherit nil :family ,serif-font :bold nil :foreground ,"#1e90ff"))))
-     `(org-level-6 ((,class (:inherit nil :family ,serif-font :bold nil :foreground ,bg-dark))))
-     `(org-level-7 ((,class (:inherit nil :family ,serif-font :bold nil :foreground ,bg-dark))))
-     `(org-level-8 ((,class (:inherit nil :family ,serif-font :bold nil :foreground ,bg-dark))))
+     `(org-level-1 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold ,(if spacemacs-theme-org-bold 'unspecified nil) :foreground ,bg-dark :height ,(if spacemacs-theme-org-height 1.3 1.0) :background ,(when spacemacs-theme-org-highlight head1-bg)))))
+     `(org-level-2 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold ,(if spacemacs-theme-org-bold 'unspecified nil) :slant italic :foreground "#104e8b" :height ,(if spacemacs-theme-org-height 1.2 1.0) :background ,(when spacemacs-theme-org-highlight head2-bg)))))
+     `(org-level-3 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold nil :foreground "#1874cd" :height ,(if spacemacs-theme-org-height 1.1 1.0) :background ,(when spacemacs-theme-org-highlight head3-bg)))))
+     `(org-level-4 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold nil :foreground ,"#1c86ee" :background ,(when spacemacs-theme-org-highlight head4-bg)))))
+     `(org-level-5 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold nil :foreground ,"#1e90ff"))))
+     `(org-level-6 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold nil :foreground ,bg-dark))))
+     `(org-level-7 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold nil :foreground ,bg-dark))))
+     `(org-level-8 ((,class (:inherit nil :family ,spacemacs-theme-default-serif-font :bold nil :foreground ,bg-dark))))
      `(org-link ((,class (:underline t :foreground ,comment))))
      `(org-meta-line ((,class (:foreground ,meta))))
      `(org-mode-line-clock-overrun ((,class (:foreground ,err))))
