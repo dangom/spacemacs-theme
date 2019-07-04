@@ -811,7 +811,7 @@ to 'auto, tags may not be properly aligned. "
             `(org-scheduled-previously ((,class (:foreground ,base :slant italic))))
             `(org-sexp-date ((,class (:foreground ,base))))
             `(org-special-keyword ((,class (:foreground ,func))))
-            `(org-table ((,class (:foreground ,base :background ,head1-bg))))
+            `(org-table ((,class (:foreground ,base :height 0.7 :background ,bg-white))))
             `(org-tag ((,class (:foreground ,doc-dim))))
             `(org-time-grid ((,class (:foreground ,str))))
             `(org-todo ((,class (:foreground ,war :inherit bold :background ,yellow-bg))))
