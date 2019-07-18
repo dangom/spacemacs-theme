@@ -665,6 +665,10 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; linum-relative
             `(linum-relative-current-face ((,class (:foreground ,comp))))
 
+;;;;; lsp
+            `(lsp-ui-doc-background ((,class (:background nil))))
+            `(lsp-ui-peek-list ((,class (:background nil))))
+            `(lsp-ui-peek-peek ((,class (:background nil))))
 ;;;;; magit
             `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
             `(magit-blame-date    ((,class :background ,yellow-bg :foreground ,green)))
