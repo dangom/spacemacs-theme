@@ -37,9 +37,6 @@
 
 ;;; Code:
 
-(defmacro dyn-let (varlist fn setfaces setvars)
-  (list 'let* (append varlist (funcall fn)) setfaces setvars))
-
 (defgroup spacemacs-theme nil
   "Spacemacs-theme options."
   :group 'faces)
@@ -123,7 +120,7 @@ to 'auto, tags may not be properly aligned. "
           spacemacs-theme-custom-colors))
 
 (defun create-spacemacs-theme (variant theme-name)
-  (dyn-let ((class '((class color) (min-colors 89))) ;;              ~~ Dark ~~                              ~~ Light ~~
+  (let ((class '((class color) (min-colors 89))) ;;                      ~~ Dark ~~                              ~~ Light ~~
             ;;                                                          GUI       TER                           GUI       TER
             ;; generic
             (act1          (if (eq variant 'dark) (if (true-color-p) "#222226" "#121212") (if (true-color-p) "#e7e5eb" "#d7dfff")))
@@ -228,10 +225,10 @@ to 'auto, tags may not be properly aligned. "
 
             (builtin            colors-orange)
             (doc                (color-lighten-name dark-4 20))
-            (doc-dim            (color-lighten-name doc 20))
-            )
+            (doc-dim            (color-lighten-name doc 20)))
 
-           custom-colors-override
+           (cl-loop for (var . val) in spacemacs-theme-custom-colors
+                    do (set var val))
 
            (custom-theme-set-faces
             theme-name
