@@ -232,7 +232,7 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; basics
      `(cursor ((,class (:background ,cursor))))
      `(custom-button ((,class :background ,bg2 :foreground ,base :box (:line-width 2 :style released-button))))
-     `(default ((,class (:background ,bg1 :foreground ,base :family ,spacemacs-theme-default-mono-font))))
+     `(default ((,class (:background ,bg1 :foreground ,base :family ,spacemacs-theme-default-mono-font :height 100))))
      `(default-italic ((,class (:italic t))))
      `(error ((,class (:foreground ,err))))
      `(eval-sexp-fu-flash ((,class (:background ,suc :foreground ,bg1))))
@@ -270,8 +270,8 @@ to 'auto, tags may not be properly aligned. "
      `(warning ((,class (:foreground ,war))))
 
 ;;;;; basic fonts
-     `(fixed-pitch ((t (:family ,spacemacs-theme-default-mono-font))))
-     `(variable-pitch ((t (:family ,spacemacs-theme-default-serif-font :height 1.0))))
+     `(fixed-pitch ((t (:family ,spacemacs-theme-default-mono-font :height 100))))
+     `(variable-pitch ((t (:family ,spacemacs-theme-default-serif-font :height 100))))
 
 ;;;;; ace-window
      `(aw-leading-char-face ((,class (:foreground ,func :weight bold :height 2.0 :box (:line-width 1 :color ,keyword :style released-button)))))
